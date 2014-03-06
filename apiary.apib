@@ -1,0 +1,84 @@
+FORMAT: 1A
+HOST: http://www.informaticacloud.com
+
+# Informactica Cloud Vibe REST API
+The VIBE REST API allows you to access information from your _Informatica Cloud_ organization. You can perform tasks such as create, update, and delete connections, schedules, mapplets, and task flows.
+
+
+# Group Session Management
+
+
+##  Login [/login]
+### Login to Informatica Cloud [POST]
+
++ Parameters
+    + username (required, string, `user@informaticacloud.com`) ... Informatica Cloud username
+    + password (required, string, `password`) ... Informatica Cloud password
+    
+
+
++ Request (application/json)
+
+        {"@type":"login","username":"user@informatica.com","password":"password"}
+
+
++ Response 201 (application/json)
+
+        {
+          "@type" : "user",
+          "id" : "000NJY03000000000002",
+          "orgId" : "FFFFFF",
+          "name" : "nbrisoux@informatica.com",
+          "description" : null,
+          "createTime" : "2013-07-08T18:01:54.000Z",
+          "updateTime" : "2014-02-25T15:46:34.000Z",
+          "createdBy" : "System",
+          "updatedBy" : "nbrisoux@informatica.com",
+          "sfUsername" : null,
+          "firstName" : "Name",
+          "lastName" : "Surname",
+          "title" : "Senior Cloud Platform Specialist",
+          "password" : "********",
+          "phone" : "1231231234",
+          "emails" : null,
+          "timezone" : "America/Los_Angeles",
+          "serverUrl" : "https://app2.informaticacloud.com/saas",
+          "icSessionId" : "iEpnAXaIXfEhl6eO",
+          "securityQuestion" : "SPOUSE_MEETING_CITY",
+          "securityAnswer" : null,
+          "roles" : [ {
+            "@type" : "role",
+            "id" : "001000000000003",
+            "orgId" : "0",
+            "name" : "Admin",
+            "description" : "Role that has ability to perform administrative tasks for an organization.",
+            "createTime" : "2013-05-24T16:30:32.000Z",
+            "updateTime" : "2014-02-22T19:22:08.000Z",
+            "createdBy" : "System",
+            "updatedBy" : "System"
+          } ],
+          "usergroups" : [ ]
+        }
+
+
+## Logout [/logout]
+
+
+### Logout of Informatica Cloud [POST]
+Use this call to terminate an active Informatica Cloud session. You must provide the _icSessionId_ in the request header.
+
++ Request 
+
+    + Header
+
+            icSessionId:"EFelWYBP4WmMeO2g9PJs"
+            charset : "UTF-8"
+            Content-type : "application/json"
+
+    
++ Response 200
+
+
+
+    
+
