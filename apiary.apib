@@ -80,12 +80,16 @@ Use this call to terminate an active Informatica Cloud session. You must provide
 
 # Group Monitoring 
 
-## Logout [/activityLog]
+## Activity Log [/api/v2/activity/activityLog?rowLimit=<row limit>]
 
 
-### Logout of Informatica Cloud [POST]
-Use this call to terminate an active Informatica Cloud session. You must provide the _icSessionId_ in the request header.
+### Get a list of tasks that have completed [GET]
 
+Returns an activityLogEntry object for each row in the activity log. Default behaviour is to return all rows but you can optionally supply a row limit.
+
++ Parameters
+    + rowLimit (optional, integer, `3`) ... Informatica Cloud username
+    
 + Request 
 
     + Header
