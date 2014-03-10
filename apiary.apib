@@ -78,7 +78,113 @@ Use this call to terminate an active Informatica Cloud session. You must provide
     
 + Response 200
 
+# Group Monitoring 
 
+## Logout [/activityLog]
+
+
+### Logout of Informatica Cloud [POST]
+Use this call to terminate an active Informatica Cloud session. You must provide the _icSessionId_ in the request header.
+
++ Request 
+
+    + Header
+
+            icSessionId:"EFelWYBP4WmMeO2g9PJs"
+            charset : "UTF-8"
+            Content-type : "application/json"
 
     
++ Response 200    
 
+        [ {
+          "@type" : "activityLogEntry",
+          "id" : "000NJYC100000000038R",
+          "type" : "DSS",
+          "objectName" : "strevus matching - filtered",
+          "runId" : 2,
+          "startTime" : "2014-03-06T17:25:49.000Z",
+          "endTime" : "2014-03-06T17:25:53.000Z",
+          "state" : 1,
+          "failedSourceRows" : 0,
+          "successSourceRows" : 12,
+          "failedTargetRows" : 0,
+          "successTargetRows" : 12,
+          "errorMsg" : null,
+          "entries" : [ {
+            "@type" : "activityLogEntry",
+            "id" : "8087583",
+            "type" : "DSS",
+            "objectName" : "FILTETRED_MATCHEDCOMPANIES",
+            "runId" : 0,
+            "startTime" : "2014-03-06T17:25:49.000Z",
+            "endTime" : "2014-03-06T17:25:53.000Z",
+            "state" : 1,
+            "failedSourceRows" : 0,
+            "successSourceRows" : 12,
+            "failedTargetRows" : 0,
+            "successTargetRows" : 12,
+            "errorMsg" : "No errors encountered.",
+            "entries" : [ ]
+          } ]
+        },  {
+          "@type" : "activityLogEntry",
+          "id" : "000NJYC10000000003EB",
+          "type" : "DRS",
+          "objectName" : "strevus matching copy",
+          "runId" : 1,
+          "startTime" : "2014-03-06T17:23:27.000Z",
+          "endTime" : "2014-03-06T17:23:35.000Z",
+          "state" : 1,
+          "failedSourceRows" : 0,
+          "successSourceRows" : 99,
+          "failedTargetRows" : 0,
+          "successTargetRows" : 99,
+          "errorMsg" : null,
+          "entries" : [ {
+            "@type" : "activityLogEntry",
+            "id" : "8087455",
+            "type" : "DRS",
+            "objectName" : "matchedcompanies",
+            "runId" : 0,
+            "startTime" : "2014-03-06T17:23:31.000Z",
+            "endTime" : "2014-03-06T17:23:35.000Z",
+            "state" : 1,
+            "failedSourceRows" : 0,
+            "successSourceRows" : 99,
+            "failedTargetRows" : 0,
+            "successTargetRows" : 99,
+            "errorMsg" : "No errors encountered.",
+            "entries" : [ ]
+          } ]
+        },  {
+          "@type" : "activityLogEntry",
+          "id" : "000NJYC10000000002XL",
+          "type" : "MTT_TEST",
+          "objectName" : "advw2012toRedshift",
+          "runId" : 1,
+          "startTime" : "2014-02-28T14:04:22.000Z",
+          "endTime" : "2014-02-28T14:04:40.000Z",
+          "state" : 1,
+          "failedSourceRows" : 0,
+          "successSourceRows" : 19614,
+          "failedTargetRows" : 0,
+          "successTargetRows" : 19614,
+          "errorMsg" : null,
+          "entries" : [ {
+            "@type" : "activityLogEntry",
+            "id" : "7386788",
+            "type" : "MTT_TEST",
+            "objectName" : "",
+            "runId" : 0,
+            "startTime" : "2014-02-28T14:04:22.000Z",
+            "endTime" : "2014-02-28T14:04:40.000Z",
+            "state" : 1,
+            "failedSourceRows" : 0,
+            "successSourceRows" : 19614,
+            "failedTargetRows" : 0,
+            "successTargetRows" : 19614,
+            "errorMsg" : "No errors encountered.",
+            "entries" : [ ]
+          } ]
+        } ]
