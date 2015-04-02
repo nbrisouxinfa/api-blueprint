@@ -253,22 +253,22 @@ Default is false.
 
 # Group Agent
 
-## agent [/agent]
+## agent [/agent/id]
 
 ### Details of an Informatica Cloud Secure Agent or the details of all Secure Agents in the organization [GET]
-Use this resource to request the details of an Informatica Cloud Secure Agent or the details of all Secure Agents in the organization.
+Use this resource to request the details of an Informatica Cloud Secure Agent .To request the details of all Secure Agents in the organization, omit the optional Secure Agent ID.
+
++ Parameters
+    + id (optional,string, `000IL10800000000000L`) ... required in case of to get details of particular Secure Agent. Optional in case of to get details of all Secure Agents.
 
 + Request 
 
-    + Header
-    
-            Accept:"application/json"
-            icSessionId: "EFelWYBP4WmMeO2g9PJs" 
+        {"@type":"agent","Id":"000IL10800000000000L"}
             
 + Response 200 (application/json)
 
         [ {
-          "@type" : "id",
+          "@type" : "agent",
           "orgId" : "Org000IL1",
           "name" : "Secure Agent Name",
           "createTime" : "2",
@@ -302,13 +302,149 @@ Use this resource to request the details of an Informatica Cloud Secure Agent or
           "configUpdateTime:"2015-01-2T12:02:21.000Z" 
          } ]
 
-## Delete Request [/agent/id]
+## Delete Request [/agent/<id>]
 
 ### To delete a Secure Agent, use the Secure Agent ID [DELETE]
 You can delete a Secure Agent if it is not associated with any connections. Before you delete a Secure Agent, update associated connections to use another Secure Agent.
 
 
++ Response 200 
+
+# Group AuditLog
+
+## auditlog [/auditlog?batchId=<batchId>&batchSize=<batchSize>]
+
+### Use this resource to request entries from the audit log [GET]
+To request the most recent 200 entries in the audit log.To request a specific batch of audit log entries, define the batch size and request a batch number.
+
++ Parameters
+    + batchId (required, integer, `1` ) ... Batch ID
+    + batchSize (required, integer, `25` ) ... Batch Size
+        
++ Request 
+    
+         {"@type":"auditlog","batchId":"1","batchSize":"25"}
+    
++ Response 200 (application/json)
+            
+            {
+            "@type" : "auditlog",
+            "id" :"000IL10300000000000L",
+            "version":"r21",
+            "orgId" : "Org000IL1",
+            "username" : "user@informatica.com",
+            "entryTime" : "2013-07-08T18:01:54.000Z",
+            "objectId" : "000IL117000000000015",
+            "objectName" : "Anush_MultiTarget",
+            "category": "DSS Data synchronization",
+            "event" : "UPDATE",
+            "eventParam" : "Objects related to action",
+            "message" : "additional information",
+            }
+
+    
+# Group LogoutALL
+
+## logoutall [/logoutall]
+
+###Use this resource to log out of an organization and end all REST API sessions for the user in the request [POST]
+Enter Valid username and password to access.
+
++ Parameters
+    + username (required, string, `user@informaticacloud.com`) ... Informatica Cloud username
+    + password (required, string, `password`) ... Informatica Cloud password
+    
++ Request (application/json)
+
+        {"@type":"login","username":"user@informatica.com","password":"password"}
+
+
 + Response 200
+
+# Group User
+
+## user [/user/<id>]
+
+###Use this resource to request the details of an Informatica Cloud user account or the details of all user accounts in the organization [GET]
+
++ Parameters
+    + id (optional, string, `000IL10300000000000L`) ... required in case of to get details of particular user. Optional in case of to get details of all users.
+
++ Request
+
+        {"@type":"user","Id":"000IL10300000000000L"}
+        
++ Response 200 (application/json)
+
+        {
+          "@type" : "user",
+          "id" : "000NJY03000000000002",
+          "orgId" : "FFFFFF",
+          "name" : "user@informatica.com",
+          "description" : null,
+          "createTime" : "2013-07-08T18:01:54.000Z",
+          "updateTime" : "2014-02-25T15:46:34.000Z",
+          "createdBy" : "System",
+          "updatedBy" : "nbrisoux@informatica.com",
+          "sfUsername" : null,
+          "firstName" : "Name",
+          "lastName" : "Surname",
+          "title" : "Senior Cloud Platform Specialist",
+          "password" : "**********",
+          "phone" : "1231231234",
+          "emails" : null,
+          "timezone" : "America/Los_Angeles",
+          "serverUrl" : "https://app2.informaticacloud.com/saas",
+          "icSessionId" : "iEpnAXaIXfEhl6eO",
+          "securityQuestion" : "SPOUSE_MEETING_CITY",
+          "securityAnswer" : null,
+          "roles" : [ {
+            "@type" : "role",
+            "id" : "001000000000003",
+            "orgId" : "0",
+            "name" : "Admin",
+            "description" : "Role that has ability to perform administrative tasks for an organization.",
+            "createTime" : "2013-05-24T16:30:32.000Z",
+            "updateTime" : "2014-02-22T19:22:08.000Z",
+            "createdBy" : "System",
+            "updatedBy" : "System"
+          } ],
+          "usergroups" : [ {
+            "@type" : "usergroups",
+            "id" : "001000000000003",
+            "orgId" : "0",
+            "name" : "Admin",
+            "description" : "Role that has ability to perform administrative tasks for an organization.",
+            "createTime" : "2013-05-24T16:30:32.000Z",
+            "updateTime" : "2014-02-22T19:22:08.000Z",
+            "createdBy" : "System",
+            "updatedBy" : "System",
+            "aclEntry"   : "Permissions"
+          } ],
+          "emails" : "user@informatica.com",
+          "timeZone" : "America/New_York",
+          "serverUrl" : "https://app.informaticaondemand.com/saas/app/admin/users.do",
+          "spiUrl" : "https://app.informaticaondemand.com/saas/app/admin/users.do",
+          "icSessionId" : "EFelWYBP4WmMeO2g9PJs"
+        }
+    
+    
+
+
+
+
+
+
+ 
+    
+
+    
+    
+    
+
+
+
+
 
 
 
