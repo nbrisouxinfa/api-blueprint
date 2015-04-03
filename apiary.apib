@@ -19,7 +19,11 @@ Enter Valid username and password to access.
 
 + Request (application/json)
 
-        {"@type":"login","username":"user@informatica.com","password":"password"}
+        {
+        "@type":"login",
+        "username":"user@informatica.com",
+        "password":"password"
+        }
 
 
 + Response 201 (application/json)
@@ -96,7 +100,7 @@ Returns an activityLogEntry object for each row in the activity log. Default beh
 
             icSessionId:"EFelWYBP4WmMeO2g9PJs"
             charset : "UTF-8"
-            Content-type : "application/json"
+            Content-type : application/json"
 
     
 + Response 200 (application/json)   
@@ -212,8 +216,8 @@ Default is false.
     + Header
     
             icSessionId:"EFelWYBP4WmMeO2g9PJs"
-            Content-Type: "application/xml"
-            Accept: "application/xml"
+            Content-Type: "application/json"
+            Accept: "application/json"
             
  
 + Response 200 (application/xml)
@@ -263,7 +267,11 @@ Use this resource to request the details of an Informatica Cloud Secure Agent .T
 
 + Request 
 
-        {"@type":"agent","Id":"000IL10800000000000L"}
+    + Header
+    
+            icSessionId:"EFelWYBP4WmMeO2g9PJs"
+            Content-Type: "application/json"
+            Accept: "application/json"
             
 + Response 200 (application/json)
 
@@ -323,7 +331,11 @@ To request the most recent 200 entries in the audit log.To request a specific ba
         
 + Request 
     
-         {"@type":"auditlog","batchId":"1","batchSize":"25"}
+    + Header
+    
+            icSessionId:"EFelWYBP4WmMeO2g9PJs"
+            Content-Type: "application/json"
+            Accept: "application/json"
     
 + Response 200 (application/json)
             
@@ -368,11 +380,15 @@ Enter Valid username and password to access.
 ###Use this resource to request the details of an Informatica Cloud user account or the details of all user accounts in the organization [GET]
 
 + Parameters
-    + id (optional, string, `000IL10300000000000L`) ... required in case of to get details of particular user. Optional in case of to get details of all users.
+    + id (required, string, `000IL10300000000000L`) ... required in case of to get details of particular user. Optional in case of to get details of all users.
 
 + Request
 
-        {"@type":"user","Id":"000IL10300000000000L"}
+    + Header
+    
+            icSessionId:"EFelWYBP4WmMeO2g9PJs"
+            Content-Type: "application/json"
+            Accept: "application/json"
         
 + Response 200 (application/json)
 
@@ -428,21 +444,200 @@ Enter Valid username and password to access.
           "icSessionId" : "EFelWYBP4WmMeO2g9PJs"
         }
     
+# Group UserGroup
+
+## usergroup [/usergroup/<id>]
+
+### Use this resource to request the details of a user group or the details of all user groups in the organization [GET]
+To request the details of a user group, use the user group ID . To request the details of all user groups in the organization, omit the optional ID.
+
++ Parameters
+    + id (optional,string, `000IL105000000000003`) ... required in case of to get details of particular user group. Optional in case of to get details of all user groups.
+
++ Request 
+        
+    + Header
     
+            icSessionId:"EFelWYBP4WmMeO2g9PJs"
+            Content-Type: "application/json"
+            Accept: "application/json"
+        
++ Response 200(application/json)
+        
+        {
+          "@type" : "usergroup",
+          "id" : "000NJY03000000000002",
+          "orgId" : "FFFFFF",
+          "name" : "user@informatica.com",
+          "description" : null,
+          "createTime" : "2013-07-08T18:01:54.000Z",
+          "updateTime" : "2014-02-25T15:46:34.000Z",
+          "createdBy" : "System",
+          "updatedBy" : "nbrisoux@informatica.com",
+          "aclEntry" : [ {
+            "@type" : "aclEntry",
+            "adminPermission" : "Permission for individual Objects",
+            "createPermission" : "Allows to create objects",
+            "deletePermission" : "delete objects",
+            "executePermission" : "run task and task flows",
+            "objectType" : "Agent",
+            "readPermission" : "view object and project",
+            "updatePermission" : "edit objects",
+          } ]
+        }
 
+# Group Org
 
+## org [/org/<id>]
 
+### Use this resource to request the details of your Informatica Cloud organization or a related sub-organization.use this resource to update an organization or related sub-organization and also delete a sub-organization [GET]
+To request the details of a sub-organization related to your organization, use the sub-organization ID.To request the details of your organization, omit the optional sub-organization ID.
 
++ Parameters
+    + id (required,string, `Org000Y8D`) ... required in case of to get details of particular organization. Optional in case of to get details of organization.
 
++ Request  
 
- 
+    + Header
     
+            icSessionId:"EFelWYBP4WmMeO2g9PJs"
+            Content-Type: "application/json"
+            Accept: "application/json"  
 
-    
-    
-    
++ Response 200 (application/json)
 
+        {
+        "@type" : "user",
+          "id" : "Org000Y8D",
+          "orgId" : "Org000IL1",
+          "name" : "Informatica",
+          "description" : null,
+          "createTime" : "2013-07-08T18:01:54.000Z",
+          "updateTime" : "2014-02-25T15:46:34.000Z",
+          "createdBy" : "System",
+          "updatedBy" : "nbrisoux@informatica.com",
+          "parentOrgId" : "Org000IL1",
+          "address1" : "No. 66/1, Bagmane Commerz 02, Bagmane Tech Park",
+          "address2" : "null",
+          "address3" : "null",
+          "city" : "Bangalore",
+          "State" : "Karnataka",
+          "zipcode" : "560093"
+          "country" : "India",
+          "employees" : "1000-5000",
+          "offerCode" : null,
+          "successEmails" : null,
+          "warningEmails" : null,
+          "errorEmails" : null,
+          "campaignCode" : null,
+          "atlasProjectId" : null,
+          "zuoraAccountId" : null,
+          "devOrg" : 1,
+          "timezone" : "IndianStandard Time Delhi Bombay",
+          "maxLogRows" : 100,
+          "minPasswordLength" : 6,
+          "minPasswordCharMix" : 1,
+          "passwordReuseInDays" : 0,
+          "passwordExpirationInDays" : 0,
+          "subOrgLimit" : 2,
+          "parentOrgId" : "Org000IL1",
+          "jobExecUserProfile" : null,
+          "twoFactorAuthentication" : "Disabled ",
+          "ipAddressRanges" : "IPV4",
+          "subOrg" : [ {
+            "@type" : "subOrg",
+            "id" : "Org000Y8D",
+            "name" : "Marketplace_Bundle",
+          } ],
+        }
+        
+## UpdateOrg [/org/<orgID>]
 
+### Use this resource to update a sub-organization if your organization has the Org Hierarchy license and if the user that started the REST API session has the Admin role in the parent organization [POST]
+To update the details of a sub-organization related to your parent organization, use the organization ID.To update the details of your organization, omit the optional ID.
+
++ Parameters
+    + orgID (required, string, `Org000IL1`) ... Organization ID
+    
++ Request 
+        
+            <org> 
+                <name>Dev Org</name> 
+                <address1>333 Main Street</address1> 
+                <city>City</city> 
+                <state>MD</state>
+                <zipcode>90001</zipcode> 
+                <country>US</country>
+            </org>
+   
+    + Header
+    
+            "icSessionId": "EFelWYBP4WmMeO2g9PJs"
+            "Content-Type": "application/xml"
+            "Accept": "application/xml"
+           
++ Response 200 
+    
+        
+## DeleteOrg [/org/<orgid>]
+
+### Use this resource to delete an Informatica Cloud sub-organization if the user that started the Informatica Cloud REST API session has the Admin role and belongs the parent organization [DELETE]
+
++ Parameters
+    + id (required,string, `Org000IL1`) ... Organization ID
++ Request  
+
+    + Header
+    
+            "icSessionId": "EFelWYBP4WmMeO2g9PJs"
+            "Content-Type": "application/xml"
+            "Accept": "application/xml"
+        
++ Response 200
+
+# Group BundleObject
+
+## bundleObject [/bundleObkject/<id>/?published=value&installed=value]
+
+### Use this resource to request the details for a specific bundle or the details for all bundles published by the organization or installed by the organization and also push a published private bundle to sub-organizations [GET]
+To request the details of a bundle, use the bundle ID.
+To request the details for all bundles published by the organization, use published as true.
+To request the details for all bundles installed by the organization, use installed as true.
+
++ Parameters
+    + id (required,string, `000IL115000000000002`) ... details of a bundle
+    + published (required, string, `true`) ... details for all bundles published by the organization
+    + installed ( required, sting , `true`) ... details for all bundles installed by the organization
+
++ Request (application/json)
+
+    + Header
+    
+            "icSessionId":"EFelWYBP4WmMeO2g9PJs"
+            "Content-Type": "application/json"
+            "Accept" :"application/json"
+            
++ Response 200
+
+        {
+          "@type" : "bundleObject",
+          "id" : "000IL115000000000002",
+          "orgId" : "Org000IL1",
+          "name" : "India Contact Validation",
+          "description" : "A bundle of mapplets which can be used to validate the India specific contact details like phone number, mobile number, postal code (PIN Code), PAN number,  Passport number etc.
+                        The mapplets in this bundle use regular expression to perform the data validation",
+          "createTime" : "2015-01-14T18:01:54.000Z",
+          "updateTime" : "2015-01-31T15:46:34.000Z",
+          "createdBy" : "System",
+          "updatedBy" : "nbrisoux@informatica.com",
+          "lastVersion" : 1.0,
+          "revokeTime" : null,
+          "paid" : "false",
+          "accessType" : "public",
+          "objects" : "Bundle Contents",
+          "publishOrgId" : "Org000IL1",
+          "publishOrgName" : "Informatica"
+          }
 
 
 
